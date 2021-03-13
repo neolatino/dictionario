@@ -33,8 +33,8 @@ const RESOURCES = {
 "assets/packages/font_awesome_flutter/lib/fonts/fa-solid-900.ttf": "d80ca32233940ebadc5ae5372ccd67f9",
 "assets/packages/font_awesome_flutter/lib/fonts/fa-brands-400.ttf": "831eb40a2d76095849ba4aecd4340f19",
 "assets/FontManifest.json": "3ddd9b2ab1c2ae162d46e3cc7b78ba88",
-"index.html": "3f0669d87eb7f36a968024915dd1c0f0",
-"/": "3f0669d87eb7f36a968024915dd1c0f0",
+"index.html": "2e82ddf547c6ef0d07699aa1681ff725",
+"/": "2e82ddf547c6ef0d07699aa1681ff725",
 "main.dart.js": "8498604d30eadfced08a7bdbf6de27c1",
 "version.json": "2c9abb15b74f709adddc0e1a07cff56c",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796"
