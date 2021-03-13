@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:neolatino_dictionary/model/language.dart';
-
-import '../styles.dart';
+import 'package:neolatino_dictionario/config/Style.dart';
+import 'package:neolatino_dictionario/model/language.dart';
 
 class LanguageIcon extends StatelessWidget {
   final Language language;
@@ -14,8 +13,8 @@ class LanguageIcon extends StatelessWidget {
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         border: Border.all(
-          color: AppStyles.colorPrimary,
-          width: 1,
+          color: Style.colorOnSurface,
+          width: 2,
         ),
       ),
       child: Image.asset(

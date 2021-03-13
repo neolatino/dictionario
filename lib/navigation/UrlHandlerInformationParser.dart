@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:neolatino_dictionary/model/language.dart';
-import 'package:neolatino_dictionary/navigation/NavigationState.dart';
+import 'package:neolatino_dictionario/model/language.dart';
+import 'package:neolatino_dictionario/navigation/NavigationState.dart';
 
 class UrlHandlerInformationParser extends RouteInformationParser<NavigationState> {
   // Url to navigation state

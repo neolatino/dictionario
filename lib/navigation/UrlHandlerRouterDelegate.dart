@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:neolatino_dictionary/bloc/dictionary_bloc.dart';
-import 'package:neolatino_dictionary/navigation/NavigationState.dart';
-import 'package:neolatino_dictionary/ui/widget/HomePage.dart';
+import 'package:neolatino_dictionario/bloc/dictionary_bloc.dart';
+import 'package:neolatino_dictionario/navigation/NavigationState.dart';
+import 'package:neolatino_dictionario/ui/widget/HomePage.dart';
+import 'package:neolatino_dictionario/ui/widget/SearchPage.dart';
 
 final GlobalKey<NavigatorState> _urlHandlerRouterDelegateNavigatorKey = GlobalKey<NavigatorState>();
 
@@ -26,7 +27,7 @@ class UrlHandlerRouterDelegate extends RouterDelegate<NavigationState>
               builder: (BuildContext context, state) {
                 var newState;
                 if (state is HomeState) newState = HomePage();
-                if (state is SearchState) newState = HomePage();
+                if (state is SearchState) newState = SearchPage(state: state);
                 if (state is EntryState) newState = HomePage();
                 if (state is UnknownState) newState = HomePage();
 

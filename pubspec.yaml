@@ -1,5 +1,6 @@
-name: neolatino_dictionary
-description: A new Flutter project.
+name: neolatino_dictionario
+description: Dictionario Neolatino
+label: Dictionario Neolatino
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -20,7 +21,8 @@ dependencies:
   google_fonts: ^2.0.0
   diacritic: ^0.1.1
   url_launcher: ^6.0.2
-  font_awesome_flutter: ^8.12.0
+  font_awesome_flutter: ^9.0.0-nullsafety
+  http: ^0.13.0
 
 dev_dependencies:
   flutter_test:

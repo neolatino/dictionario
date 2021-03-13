@@ -1,8 +1,13 @@
+import 'dart:convert';
+
 import 'package:csv/csv.dart';
 import 'package:diacritic/diacritic.dart';
-import 'package:flutter/services.dart';
-import 'package:neolatino_dictionary/model/dictionary_entry.dart';
-import 'package:neolatino_dictionary/model/language.dart';
+import 'package:http/http.dart' as http;
+import 'package:neolatino_dictionario/model/dictionary_entry.dart';
+import 'package:neolatino_dictionario/model/language.dart';
+
+const dictionaryUrl =
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vSTGFkqoTOA-Q266tPGtzJ0Giaq2LGpxWtIlp0vYAH46gvxf4qxRIVtbK7bx1epz2SwqEQEQR8GwlLn/pub?gid=0&single=true&output=csv";
 
 class SearchMatch {
   DictionaryEntry entry;
@@ -27,38 +32,43 @@ class DictionaryService {
   Future<void> load() async {
     if (loaded) return;
 
-    loaded = true;
+    final response = await http.get(Uri.parse(dictionaryUrl));
+    final document = Utf8Decoder().convert(response.bodyBytes);
 
     entries.clear();
 
-    final rawDict = await rootBundle.loadString("assets/dictionary.csv");
-    final dict = const CsvToListConverter().convert(rawDict, shouldParseNumbers: false).skip(1);
+    final dict = const CsvToListConverter().convert(document, shouldParseNumbers: false).skip(1);
 
     dict.forEach((it) {
       entries.add(DictionaryEntry(
-        0,
-        categoryName(it[1]),
-        it[0],
-        it[2],
+        int.parse(it[0]),
+        "",
         it[3],
-        it[4],
-        it[5],
         it[6],
         it[7],
+        it[8],
+        it[9],
+        it[12],
+        it[14],
+        it[15],
       ));
     });
 
+    loaded = true;
     print("#Loaded ${entries.length} dictionary entries");
+    print("${entries.firstWhere((element) => element.id == 1402).as(Language.French)}");
   }
 
-  List<SearchMatch> findEntries(String query) {
+  Future<List<SearchMatch>> findEntries(String query) async {
+    if (!loaded) await load();
+
     if (query.isEmpty) return [];
-    query = removeDiacritics(query.toUpperCase());
+    query = removeDiacritics(query.toLowerCase());
 
     final matches = entries
         .expand((entry) => Language.values
             .map((lang) => SearchMatch(entry, lang, stringDiff(removeDiacritics(entry.as(lang)), query))))
-        .where((match) => match.score >= 0)
+        .where((match) => match.score == 0)
         .toList();
 
     matches.sort((a, b) => a.score.compareTo(b.score));

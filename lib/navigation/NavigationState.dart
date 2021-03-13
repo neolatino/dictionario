@@ -1,5 +1,5 @@
 // Authentication states
-import 'package:neolatino_dictionary/model/language.dart';
+import 'package:neolatino_dictionario/model/language.dart';
 
 abstract class NavigationState {
   static NavigationHomeState home() => NavigationHomeState();

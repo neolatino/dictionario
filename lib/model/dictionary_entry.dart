@@ -4,15 +4,15 @@ class DictionaryEntry {
   final int id;
   final String cat;
   final String la;
-
   final String pt;
   final String es;
   final String ca;
   final String fr;
   final String it;
   final String ro;
+  final String en;
 
-  DictionaryEntry(this.id, this.cat, this.la, this.pt, this.es, this.ca, this.fr, this.it, this.ro);
+  DictionaryEntry(this.id, this.cat, this.la, this.pt, this.es, this.ca, this.fr, this.it, this.ro, this.en);
 
   String as(Language lang) {
     switch (lang) {
@@ -30,6 +30,8 @@ class DictionaryEntry {
         return it;
       case Language.Romanian:
         return ro;
+      case Language.English:
+        return en;
     }
   }
 }

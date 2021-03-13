@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
-import 'package:neolatino_dictionary/model/dictionary_entry.dart';
-import 'package:neolatino_dictionary/model/language.dart';
-import 'package:neolatino_dictionary/service/dictionary_service.dart';
+import 'package:neolatino_dictionario/model/dictionary_entry.dart';
+import 'package:neolatino_dictionario/model/language.dart';
+import 'package:neolatino_dictionario/service/dictionary_service.dart';
 
 /* Events */
 
@@ -37,7 +37,8 @@ class EntryEvent extends DictionaryEvent {
 abstract class DictionaryState {
   static HomeState home() => HomeState();
 
-  static SearchState search(String search, List<SearchMatch> matches) => SearchState(search, matches);
+  static SearchState search(String search, List<SearchMatch> matches, bool loading) =>
+      SearchState(search, matches, loading);
 
   static EntryState entry(DictionaryEntry entry, Language lang) => EntryState(entry, lang);
 
@@ -49,8 +50,9 @@ class HomeState extends DictionaryState {}
 class SearchState extends DictionaryState {
   final String search;
   final List<SearchMatch> matches;
+  final bool loading;
 
-  SearchState(this.search, this.matches);
+  SearchState(this.search, this.matches, this.loading);
 }
 
 class EntryState extends DictionaryState {
@@ -61,6 +63,7 @@ class EntryState extends DictionaryState {
 }
 
 class UnknownState extends DictionaryState {}
+
 /* Bloc */
 
 class DictionaryBloc extends Bloc<DictionaryEvent, DictionaryState> {
@@ -75,11 +78,9 @@ class DictionaryBloc extends Bloc<DictionaryEvent, DictionaryState> {
       yield DictionaryState.home();
     }
     if (event is SearchEvent) {
-      yield DictionaryState.search(event.search, []);
+      yield DictionaryState.search(event.search, [], true);
+      var matches = await service.findEntries(event.search);
+      yield DictionaryState.search(event.search, matches, false);
     }
-
-    //final entries = service.findEntries(event.query);
-    //print("Found ${entries.length} entries");
-    //yield DictionaryState.search(event.query, entries);
   }
 }

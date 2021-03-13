@@ -1,4 +1,4 @@
-enum Language { NeoLatino, Portuguese, Spanish, Catalan, French, Italian, Romanian }
+enum Language { NeoLatino, Portuguese, Spanish, Catalan, French, Italian, Romanian, English }
 
 extension LanguageExt on Language {
   static final languageCode = {
@@ -8,7 +8,8 @@ extension LanguageExt on Language {
     Language.Catalan: "ca",
     Language.French: "fr",
     Language.Italian: "it",
-    Language.Romanian: "ro"
+    Language.Romanian: "ro",
+    Language.English: "en",
   };
 
   static Language fromCode(String code) {
@@ -16,8 +17,6 @@ extension LanguageExt on Language {
   }
 
   String icon() => "assets/icons/${languageCode[this]}.png";
-
-  String dict() => "assets/dict/${languageCode[this]}.csv";
 
   String code() => "${languageCode[this]}";
 }

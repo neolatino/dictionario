@@ -1,6 +1,6 @@
 {
-  "name": "neolatino_dictionary",
-  "short_name": "neolatino_dictionary",
+  "name": "neolatino_dictionario",
+  "short_name": "neolatino_dictionario",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#0175C2",
