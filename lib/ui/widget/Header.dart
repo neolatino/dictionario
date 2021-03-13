@@ -23,7 +23,6 @@ class Header extends StatelessWidget {
     return SizedBox(
       height: 60,
       child: Container(
-        //color: Style.colorSecondary,
         decoration: withHome || withSearch
             ? BoxDecoration(
                 color: Style.colorSecondary,
@@ -97,41 +96,53 @@ class Header extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        TextButton(
-          child: Text(
-            "Sito Officiale",
-            style: TextStyle(
-              fontSize: 18.0,
-              color: Style.colorOnPrimary,
-            ),
-          ),
-          onPressed: () {
-            launch(Config.OfficialWebsite);
-          },
-        ),
-        separator(context),
-        IconButton(
-          iconSize: 35,
-          padding: EdgeInsets.zero,
-          icon: FaIcon(
-            FontAwesomeIcons.github,
-            color: Style.colorOnSecondary,
-          ),
-          onPressed: () {
-            launch(Config.GithubUrl);
-          },
-        ),
+        socialLink("Sito Officiale", Config.OfficialWebsiteUrl),
+        separator(),
+        socialIcon(FontAwesomeIcons.discord, Config.DiscordUrl),
+        separator(),
+        socialIcon(FontAwesomeIcons.reddit, Config.RedditUrl),
+        separator(),
+        socialIcon(FontAwesomeIcons.github, Config.GithubUrl),
       ],
     );
   }
 
-  Widget separator(BuildContext context) {
+  Widget separator() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5.0),
       child: SizedBox(
         height: 30,
         child: VerticalDivider(color: Style.colorOnPrimary),
       ),
+    );
+  }
+
+  Widget socialLink(String label, String url) {
+    return TextButton(
+      child: Text(
+        label,
+        style: TextStyle(
+          fontSize: 18.0,
+          color: Style.colorOnPrimary,
+        ),
+      ),
+      onPressed: () {
+        launch(url);
+      },
+    );
+  }
+
+  Widget socialIcon(IconData icon, String url) {
+    return IconButton(
+      iconSize: 35,
+      padding: EdgeInsets.zero,
+      icon: FaIcon(
+        icon,
+        color: Style.colorOnSecondary,
+      ),
+      onPressed: () {
+        launch(url);
+      },
     );
   }
 }

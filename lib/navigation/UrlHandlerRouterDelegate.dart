@@ -25,6 +25,9 @@ class UrlHandlerRouterDelegate extends RouterDelegate<NavigationState>
           MaterialPage(
             child: BlocBuilder<DictionaryBloc, DictionaryState>(
               builder: (BuildContext context, state) {
+                // WIP
+                return HomePage();
+
                 var newState;
                 if (state is HomeState) newState = HomePage();
                 if (state is SearchState) newState = SearchPage(state: state);

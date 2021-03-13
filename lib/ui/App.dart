@@ -8,7 +8,7 @@ class NeolatinoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'Neolatino - Dictionario',
+      title: 'Dictionario Neolatino',
       routerDelegate: UrlHandlerRouterDelegate(BlocProvider.of<DictionaryBloc>(context)), // TODO : Pass down the bloc
       routeInformationParser: UrlHandlerInformationParser(),
       debugShowCheckedModeBanner: false,

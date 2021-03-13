@@ -31,7 +31,7 @@ class HomePage extends StatelessWidget {
             constraints: BoxConstraints(maxWidth: 550),
             child: Searchbar(),
           ),
-          SizedBox(height: 300.0),
+          SizedBox(height: 500.0),
         ],
       ),
     );

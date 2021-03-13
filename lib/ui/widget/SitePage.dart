@@ -16,23 +16,40 @@ class SitePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [Style.colorPrimary, Style.colorSecondary],
-        ),
-      ),
-      child: Column(
-        children: <Widget>[
-          Header(
-            withHome: withHome,
-            withSearch: withSearch,
+    return Stack(
+      alignment: AlignmentDirectional.bottomEnd,
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [Style.colorPrimary, Style.DarkerPink],
+            ),
           ),
-          Expanded(child: body),
-        ],
-      ),
+          child: Column(
+            children: <Widget>[
+              Header(
+                withHome: withHome,
+                withSearch: withSearch,
+              ),
+              Expanded(
+                child: body,
+              ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Text(
+            "BETA",
+            style: TextStyle(
+              fontSize: 20.0,
+              color: Style.colorOnPrimary,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

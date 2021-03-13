@@ -26,6 +26,8 @@ class Searchbar extends StatelessWidget {
                       builder: (BuildContext context, state) {
                         var search = state is SearchState ? state.search : null;
                         return TextField(
+                          enabled: false,
+                          // WIP
                           controller: search != null ? (TextEditingController()..text = search) : null,
                           textAlignVertical: TextAlignVertical.center,
                           style: TextStyle(fontSize: 20),
