@@ -4,10 +4,10 @@ const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
   "favicon.ico": "44ad84574995ceaeb1c6cff26937e94f",
-"manifest.json": "29ae3d6ec3ef543b6c6f5e2d08be6b1f",
+"manifest.json": "13e8ee7cb04ebbe96bc8a3386d3ebcc8",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
-"assets/NOTICES": "b0a552331f2c539a9b1ad7ce3e7282e4",
+"assets/NOTICES": "30cc1f93339e532aeb1b396bc318ef09",
 "assets/assets/icons/it.png": "cc79b1867397b8aec17dccce31e6fbef",
 "assets/assets/icons/fr.png": "78e9f99bc3c993c9c83615d0f3d028c4",
 "assets/assets/icons/launcher.png": "88f94e267edb500bd37a89fbcc66cd44",
@@ -29,14 +29,14 @@ const RESOURCES = {
 "assets/assets/neolatino.png": "47a9c9363f9c36ebe9af07c8e6ba0fdf",
 "assets/fonts/MaterialIcons-Regular.otf": "1288c9e28052e028aba623321f7826ac",
 "assets/AssetManifest.json": "6f373f6f40bf06d72aff806257e35135",
-"assets/packages/font_awesome_flutter/lib/fonts/fa-regular-400.ttf": "4b6a9b7c20913279a3ad3dd9c96e155b",
-"assets/packages/font_awesome_flutter/lib/fonts/fa-solid-900.ttf": "dffd9504fcb1894620fa41c700172994",
-"assets/packages/font_awesome_flutter/lib/fonts/fa-brands-400.ttf": "00bb2b684be61e89d1bc7d75dee30b58",
+"assets/packages/font_awesome_flutter/lib/fonts/fa-regular-400.ttf": "a126c025bab9a1b4d8ac5534af76a208",
+"assets/packages/font_awesome_flutter/lib/fonts/fa-solid-900.ttf": "d80ca32233940ebadc5ae5372ccd67f9",
+"assets/packages/font_awesome_flutter/lib/fonts/fa-brands-400.ttf": "831eb40a2d76095849ba4aecd4340f19",
 "assets/FontManifest.json": "3ddd9b2ab1c2ae162d46e3cc7b78ba88",
-"index.html": "5c5d263c2c09cbf2627067c0064bcc5e",
-"/": "5c5d263c2c09cbf2627067c0064bcc5e",
-"main.dart.js": "f745aac13fc1540b406df4b835743656",
-"version.json": "e90be32d7d17ffdea1f456355531149b",
+"index.html": "3f0669d87eb7f36a968024915dd1c0f0",
+"/": "3f0669d87eb7f36a968024915dd1c0f0",
+"main.dart.js": "8498604d30eadfced08a7bdbf6de27c1",
+"version.json": "2c9abb15b74f709adddc0e1a07cff56c",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796"
 };
 
