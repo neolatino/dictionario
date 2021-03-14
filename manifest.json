@@ -1,11 +1,11 @@
 {
-  "name": "neolatino_dictionario",
-  "short_name": "neolatino_dictionario",
+  "name": "Dictionario Neolatino",
+  "short_name": "Dictionario Neolatino",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#0175C2",
   "theme_color": "#0175C2",
-  "description": "A new Flutter project.",
+  "description": "Dictionario Neolatino",
   "orientation": "portrait-primary",
   "prefer_related_applications": false,
   "icons": [
