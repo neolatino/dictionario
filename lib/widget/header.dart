@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:neolatino_dictionario/bloc/dictionary_bloc.dart';
-import 'package:neolatino_dictionario/config/Config.dart';
-import 'package:neolatino_dictionario/config/Style.dart';
-import 'package:neolatino_dictionario/ui/widget/Searchbar.dart';
+import 'package:neolatino_dictionario/config.dart';
+import 'package:neolatino_dictionario/style.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Header extends StatelessWidget {
-  final bool withHome;
-  final bool withSearch;
+  final Widget? custom;
 
   const Header({
     Key? key,
-    required this.withHome,
-    required this.withSearch,
+    this.custom,
   }) : super(key: key);
 
   @override
@@ -23,7 +19,7 @@ class Header extends StatelessWidget {
     return SizedBox(
       height: 60,
       child: Container(
-        decoration: withHome || withSearch
+        decoration: custom != null
             ? BoxDecoration(
                 color: Style.colorSecondary,
                 boxShadow: [
@@ -53,11 +49,14 @@ class Header extends StatelessWidget {
   Widget left(BuildContext context) {
     return Row(
       children: [
-        if (withHome)
+        if (custom != null)
           Padding(
             padding: const EdgeInsets.only(left: 10),
             child: MaterialButton(
-              onPressed: () => BlocProvider.of<DictionaryBloc>(context).add(DictionaryEvent.home()),
+              // navigate to home
+              // onPressed: () => BlocProvider.of<DictionaryBloc>(context)
+              //     .add(DictionaryEvent.home()),
+              onPressed: () => GoRouter.of(context).go('/home'),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -72,20 +71,20 @@ class Header extends StatelessWidget {
                   Text(
                     "DICTIONARIO",
                     style: GoogleFonts.headlandOne(
-                      fontSize: 8.0,
+                      fontSize: 10.0,
                       color: Style.colorOnPrimary,
-                    ).copyWith(letterSpacing: 8.6),
+                    ).copyWith(letterSpacing: 7.2),
                   ),
                 ],
               ),
             ),
           ),
-        if (withSearch)
+        if (custom != null)
           Padding(
             padding: const EdgeInsets.only(left: 10),
             child: Container(
               constraints: BoxConstraints(maxWidth: 550),
-              child: Searchbar(),
+              child: custom,
             ),
           ),
       ],
@@ -127,7 +126,7 @@ class Header extends StatelessWidget {
         ),
       ),
       onPressed: () {
-        launch(url);
+        launchUrl(Uri.parse(url));
       },
     );
   }
@@ -141,7 +140,7 @@ class Header extends StatelessWidget {
         color: Style.colorOnSecondary,
       ),
       onPressed: () {
-        launch(url);
+        launchUrl(Uri.parse(url));
       },
     );
   }

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:neolatino_dictionario/config/Style.dart';
-import 'package:neolatino_dictionario/ui/widget/Searchbar.dart';
-import 'package:neolatino_dictionario/ui/widget/SitePage.dart';
+import 'package:neolatino_dictionario/style.dart';
+import 'package:neolatino_dictionario/widget/page.dart';
+import 'package:neolatino_dictionario/widget/searchbar.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SitePage(
-      body: Column(
+    return PageTemplate(
+      content: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -22,9 +22,9 @@ class HomePage extends StatelessWidget {
           Text(
             "DICTIONARIO",
             style: GoogleFonts.headlandOne(
-              fontSize: 20.0,
+              fontSize: 25.0,
               color: Style.colorOnPrimary,
-            ).copyWith(letterSpacing: 36),
+            ).copyWith(letterSpacing: 32),
           ),
           SizedBox(height: 100.0),
           Container(
