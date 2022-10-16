@@ -25,5 +25,5 @@ jobs:
     - run: sed -i 's#<base href="/">#<base href="/dictionario/">#g' ./build/web/index.html
     - uses: peaceiris/actions-gh-pages@v3
       with:
-        github_token: ${{ secrets.NEOLATINO_TOKEN }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./build/web
