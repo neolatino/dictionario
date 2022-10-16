@@ -1,4 +1,5 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 abstract class Config {
   static const GithubUrl = "https://github.com/neolatino/dictionario";
@@ -6,10 +7,8 @@ abstract class Config {
   static const RedditUrl = "https://www.reddit.com/r/neolatino";
   static const DiscordUrl = "https://discord.gg/x2TyYKWx9V";
 
-  static bool isWebMobile() => false;
-  // kIsWeb &&
-  // (defaultTargetPlatform == TargetPlatform.iOS ||
-  //     defaultTargetPlatform == TargetPlatform.android);
+  static bool isWebMobile() => (defaultTargetPlatform == TargetPlatform.iOS ||
+      defaultTargetPlatform == TargetPlatform.android);
 
   static T responsive<T>(T mobile, T desktop) =>
       isWebMobile() ? mobile : desktop;
