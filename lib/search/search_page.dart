@@ -87,8 +87,65 @@ class SearchPage extends StatelessWidget {
                           ),
                         ),
                       ),
+                      // SizedBox(width: 20),
+                      // Flexible(
+                      //   child: SelectableText(
+                      //     match.entry.catGram,
+                      //     style: TextStyle(
+                      //       fontStyle: FontStyle.italic,
+                      //       fontSize: 25.0,
+                      //       color: Style.DarkerPink,
+                      //     ),
+                      //   ),
+                      // ),
                     ],
                   ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 5),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.menu_book,
+                          color: Style.DarkerPink,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10),
+                          child: SelectableText(
+                            match.entry.catGram,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 20.0,
+                              fontStyle: FontStyle.italic,
+                              color: Style.DarkerPink,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  if (match.entry.theme() != null)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 5),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.bookmark,
+                            color: Style.DarkerPink,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10),
+                            child: SelectableText(
+                              match.entry.theme()!,
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                fontStyle: FontStyle.italic,
+                                color: Style.DarkerPink,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 10.0),
                     child: Container(

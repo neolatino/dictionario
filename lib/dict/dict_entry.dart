@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:diacritic/diacritic.dart';
 import 'package:neolatino_dictionario/dict/dict.dart';
 import 'package:oxidized/oxidized.dart';
 
@@ -6,6 +7,10 @@ import 'language.dart';
 
 class DictionaryEntry {
   final int id;
+  final String catGram;
+  final String theme1;
+  final String theme2;
+  final String theme3;
   final Option<String> lat;
   final Option<String> iro;
   final Option<String> por;
@@ -23,6 +28,10 @@ class DictionaryEntry {
 
   DictionaryEntry(
       this.id,
+      this.catGram,
+      this.theme1,
+      this.theme2,
+      this.theme3,
       this.lat,
       this.iro,
       this.por,
@@ -69,6 +78,15 @@ class DictionaryEntry {
       case Language.InterSlavic:
         return sla;
     }
+  }
+
+  String? theme() {
+    final theme = [
+      theme1.isNotEmpty ? theme1 : null,
+      theme2.isNotEmpty ? theme2 : null,
+      theme3.isNotEmpty ? theme3 : null,
+    ].whereNotNull().join(" - ");
+    return theme.isEmpty ? null : theme;
   }
 
   List<Language> langs() => Language.values

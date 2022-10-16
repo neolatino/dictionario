@@ -78,6 +78,10 @@ class DictionaryCubit extends Cubit<DictionaryState> {
     final entries = csv.map((it) {
       return DictionaryEntry(
         int.parse(it[0]),
+        it[2],
+        it[3],
+        it[4],
+        it[5],
         stringToOption(it[8]),
         stringToOption(it[9]),
         stringToOption(it[10]),
@@ -103,6 +107,10 @@ class DictionaryCubit extends Cubit<DictionaryState> {
     final entries = [
       DictionaryEntry(
         0,
+        "adj.",
+        "grammàtica",
+        "alfabèto",
+        "altras",
         Some("mangare"),
         Some("mangere"),
         None(),
