@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:neolatino_dictionario/config.dart';
 import 'package:neolatino_dictionario/style.dart';
 import 'package:neolatino_dictionario/widget/page.dart';
 import 'package:neolatino_dictionario/widget/searchbar.dart';
@@ -15,23 +16,23 @@ class HomePage extends StatelessWidget {
           Text(
             "NEOLATINO",
             style: GoogleFonts.headlandOne(
-              fontSize: 80.0,
+              fontSize: Config.responsiveWidth(context, 80),
               color: Style.colorAccent,
             ),
           ),
           Text(
             "DICTIONARIO",
             style: GoogleFonts.headlandOne(
-              fontSize: 25.0,
+              fontSize: Config.responsiveWidth(context, 25),
               color: Style.colorOnPrimary,
-            ).copyWith(letterSpacing: 32),
+            ).copyWith(letterSpacing: Config.responsiveWidth(context, 32)),
           ),
-          SizedBox(height: 100.0),
+          SizedBox(height: Config.responsiveHeight(context, 100)),
           Container(
             constraints: BoxConstraints(maxWidth: 550),
             child: Searchbar(),
           ),
-          SizedBox(height: 500.0),
+          SizedBox(height: Config.responsiveHeight(context, 500)),
         ],
       ),
     );

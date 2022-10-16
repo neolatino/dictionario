@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:neolatino_dictionario/config.dart';
 import 'package:neolatino_dictionario/dict/dict_cubit.dart';
 import 'package:neolatino_dictionario/style.dart';
-import 'package:neolatino_dictionario/widget/Page.dart';
+import 'package:neolatino_dictionario/widget/page.dart';
 
 class PreLoader extends StatelessWidget {
   final Widget child;
@@ -30,25 +31,25 @@ class PreLoader extends StatelessWidget {
         Text(
           "NEOLATINO",
           style: GoogleFonts.headlandOne(
-            fontSize: 80.0,
+            fontSize: Config.responsiveWidth(context, 80),
             color: Style.colorAccent,
           ),
         ),
         Text(
           "DICTIONARIO",
           style: GoogleFonts.headlandOne(
-            fontSize: 25.0,
+            fontSize: Config.responsiveWidth(context, 25),
             color: Style.colorOnPrimary,
-          ).copyWith(letterSpacing: 32),
+          ).copyWith(letterSpacing: Config.responsiveWidth(context, 32)),
         ),
-        SizedBox(height: 100.0),
+        SizedBox(height: Config.responsiveHeight(context, 100)),
         Center(
           child: LoadingAnimationWidget.threeArchedCircle(
             color: Style.colorAccent,
             size: 64,
           ),
         ),
-        SizedBox(height: 500.0),
+        SizedBox(height: Config.responsiveHeight(context, 500)),
       ],
     );
   }

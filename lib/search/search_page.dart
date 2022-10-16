@@ -4,7 +4,7 @@ import 'package:neolatino_dictionario/dict/dict.dart';
 import 'package:neolatino_dictionario/dict/dict_cubit.dart';
 import 'package:neolatino_dictionario/dict/language.dart';
 import 'package:neolatino_dictionario/style.dart';
-import 'package:neolatino_dictionario/widget/Page.dart';
+import 'package:neolatino_dictionario/widget/page.dart';
 import 'package:neolatino_dictionario/widget/searchbar.dart';
 
 class SearchPage extends StatelessWidget {
@@ -14,7 +14,7 @@ class SearchPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<DictionaryCubit, DictionaryState>(
       builder: (context, state) => PageTemplate(
-        header: Searchbar(onSubmit: () {}),
+        header: Searchbar(),
         content: Container(
           //color: Style.colorPrimary,
           //color: Colors.white,
@@ -34,7 +34,7 @@ class SearchPage extends StatelessWidget {
     return Align(
       alignment: Alignment.center,
       child: Padding(
-        padding: EdgeInsets.only(bottom: 20),
+        padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
         child: SizedBox(
           width: 550,
           child: Container(
