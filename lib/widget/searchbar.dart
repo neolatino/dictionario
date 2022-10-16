@@ -6,7 +6,9 @@ import 'package:neolatino_dictionario/dict/dict_cubit.dart';
 class Searchbar extends StatelessWidget {
   final Function? onSubmit;
 
-  const Searchbar({super.key, this.onSubmit});
+  final TextEditingController controller;
+
+  Searchbar({super.key, this.onSubmit, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -34,12 +36,9 @@ class Searchbar extends StatelessWidget {
                       builder: (BuildContext context, state) {
                         var search = state.query;
                         return TextField(
-                            enabled: true,
-                            // WIP
                             controller: search.isSome()
-                                ? (TextEditingController()
-                                  ..text = search.unwrap())
-                                : null,
+                                ? (controller..text = search.unwrap())
+                                : controller,
                             textAlignVertical: TextAlignVertical.center,
                             style: TextStyle(
                               fontSize: 20,

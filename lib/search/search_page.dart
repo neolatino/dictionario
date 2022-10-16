@@ -8,13 +8,17 @@ import 'package:neolatino_dictionario/widget/page.dart';
 import 'package:neolatino_dictionario/widget/searchbar.dart';
 
 class SearchPage extends StatelessWidget {
-  const SearchPage({Key? key}) : super(key: key);
+  final TextEditingController controller = TextEditingController();
+
+  SearchPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<DictionaryCubit, DictionaryState>(
       builder: (context, state) => PageTemplate(
-        header: Searchbar(),
+        header: Searchbar(
+          controller: controller,
+        ),
         content: Container(
           //color: Style.colorPrimary,
           //color: Colors.white,
