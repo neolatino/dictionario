@@ -29,9 +29,12 @@ class HomePage extends StatelessWidget {
           ),
           SizedBox(height: Config.responsiveHeight(context, 100)),
           Container(
-            constraints: BoxConstraints(maxWidth: 550),
-            child: Searchbar(),
+            child: Container(
+              constraints: BoxConstraints(maxWidth: 550),
+              child: Searchbar(),
+            ),
           ),
+          Container(),
           SizedBox(height: Config.responsiveHeight(context, 500)),
         ],
       ),
