@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:neolatino_dictionario/config.dart';
 import 'package:neolatino_dictionario/dict/dict.dart';
 import 'package:neolatino_dictionario/dict/dict_cubit.dart';
 import 'package:neolatino_dictionario/dict/language.dart';
@@ -8,29 +10,49 @@ import 'package:neolatino_dictionario/widget/page.dart';
 import 'package:neolatino_dictionario/widget/searchbar.dart';
 
 class SearchPage extends StatelessWidget {
-  final TextEditingController controller = TextEditingController();
-
-  SearchPage({Key? key}) : super(key: key);
+  const SearchPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<DictionaryCubit, DictionaryState>(
       builder: (context, state) => PageTemplate(
-        header: Searchbar(
-          controller: controller,
-        ),
-        content: Container(
-          //color: Style.colorPrimary,
-          //color: Colors.white,
-          child: ListView.builder(
+        header: Searchbar(),
+        content: state.matches.when(
+          some: (matches) => ListView.builder(
             padding: EdgeInsets.only(top: 20),
-            itemCount: state.matches.length,
+            itemCount: matches.length,
             itemBuilder: (context, index) {
-              return match(state.matches[index]);
+              return match(matches[index]);
             },
           ),
+          none: () => Container(),
         ),
       ),
+    );
+  }
+
+  Widget empty(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        SizedBox(height: Config.responsiveHeight(context, 100)),
+        Text(
+          "NEOLATINO",
+          style: GoogleFonts.headlandOne(
+            fontSize: Config.responsiveWidth(context, 80),
+            color: Style.colorAccent,
+          ),
+        ),
+        Text(
+          "DICTIONARIO",
+          style: GoogleFonts.headlandOne(
+            fontSize: Config.responsiveWidth(context, 25),
+            color: Style.colorOnPrimary,
+          ).copyWith(letterSpacing: Config.responsiveWidth(context, 32)),
+        ),
+        Container(),
+      ],
     );
   }
 
@@ -53,7 +75,7 @@ class SearchPage extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      SizedBox(width: 110, child: Language.NeoLatino.widget()),
+                      SizedBox(width: 120, child: Language.NeoLatino.widget()),
                       SizedBox(width: 20),
                       Flexible(
                         child: SelectableText(
@@ -81,7 +103,7 @@ class SearchPage extends StatelessWidget {
                         .map(
                           (lang) => Row(
                             children: [
-                              SizedBox(width: 110, child: lang.widget()),
+                              SizedBox(width: 120, child: lang.widget()),
                               SizedBox(width: 20),
                               Flexible(
                                 child: SelectableText(

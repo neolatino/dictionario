@@ -6,8 +6,6 @@ import 'package:neolatino_dictionario/widget/page.dart';
 import 'package:neolatino_dictionario/widget/searchbar.dart';
 
 class HomePage extends StatelessWidget {
-  final TextEditingController controller = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return PageTemplate(
@@ -32,7 +30,7 @@ class HomePage extends StatelessWidget {
           SizedBox(height: Config.responsiveHeight(context, 100)),
           Container(
             constraints: BoxConstraints(maxWidth: 550),
-            child: Searchbar(controller: controller),
+            child: Searchbar(),
           ),
           Container(),
           SizedBox(height: Config.responsiveHeight(context, 500)),

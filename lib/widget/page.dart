@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:neolatino_dictionario/config.dart';
 import 'package:neolatino_dictionario/style.dart';
 import 'package:neolatino_dictionario/widget/header.dart';
@@ -17,7 +18,7 @@ class PageTemplate extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: Config.isWebMobile() && header != null
+      appBar: Config.isWebMobile()
           ? AppBar(
               leading: IconButton(
                 icon: Icon(Icons.menu, size: 40), // change this size and style
@@ -85,6 +86,8 @@ class PageTemplate extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          localLink(context, "Dictionario", Config.Home),
+          separator(),
           socialLink("Sito Officiale", Config.OfficialWebsiteUrl),
           separator(),
           socialIcon("Discord", FontAwesomeIcons.discord, Config.DiscordUrl),
@@ -101,6 +104,21 @@ class PageTemplate extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5.0),
       child: Divider(color: Style.colorOnPrimary),
+    );
+  }
+
+  Widget localLink(BuildContext context, String label, String url) {
+    return TextButton(
+      child: Text(
+        label,
+        style: TextStyle(
+          fontSize: 18.0,
+          color: Style.colorOnPrimary,
+        ),
+      ),
+      onPressed: () {
+        GoRouter.of(context).go(url);
+      },
     );
   }
 

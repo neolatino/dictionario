@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:neolatino_dictionario/config.dart';
 import 'package:neolatino_dictionario/dict/dict_cubit.dart';
 import 'package:neolatino_dictionario/search/search_page.dart';
 import 'package:neolatino_dictionario/widget/home.dart';
@@ -25,7 +26,7 @@ GoRouter router() => GoRouter(
           defaultTransition(
               context: context,
               state: state,
-              child: PreLoader(child: HomePage())),
+              child: Config.isWebMobile() ? SearchPage() : HomePage()),
       routes: <GoRoute>[
         GoRoute(
           path: '/',
@@ -33,7 +34,8 @@ GoRouter router() => GoRouter(
               defaultTransition(
                   context: context,
                   state: state,
-                  child: PreLoader(child: HomePage())),
+                  child: PreLoader(
+                      child: Config.isWebMobile() ? SearchPage() : HomePage())),
         ),
         GoRoute(
           path: '/search/:query',
@@ -42,6 +44,18 @@ GoRouter router() => GoRouter(
             if (query != null)
               BlocProvider.of<DictionaryCubit>(context).search(query);
 
+            return defaultTransition(
+              context: context,
+              state: state,
+              child: PreLoader(
+                child: SearchPage(),
+              ),
+            );
+          },
+        ),
+        GoRoute(
+          path: '/search',
+          pageBuilder: (BuildContext context, GoRouterState state) {
             return defaultTransition(
               context: context,
               state: state,

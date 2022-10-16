@@ -82,17 +82,21 @@ extension LanguageExt on Language {
 
   Color color() => languageColor[this]!;
 
-  Widget widget() => Container(
-        decoration: BoxDecoration(
-          color: color(),
-          borderRadius: BorderRadius.all(Radius.circular(40)),
-        ),
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 2),
-          child: Center(
-            child: Text(
-              name(),
-              style: TextStyle(color: Colors.white),
+  Widget widget() => Padding(
+        padding: const EdgeInsets.only(top: 5),
+        child: Container(
+          decoration: BoxDecoration(
+            color: color(),
+            borderRadius: BorderRadius.all(Radius.circular(40)),
+          ),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+            child: Center(
+              child: Text(
+                maxLines: 1,
+                name(),
+                style: TextStyle(color: Colors.white),
+              ),
             ),
           ),
         ),

@@ -6,9 +6,7 @@ import 'package:neolatino_dictionario/dict/dict_cubit.dart';
 class Searchbar extends StatelessWidget {
   final Function? onSubmit;
 
-  final TextEditingController controller;
-
-  Searchbar({super.key, this.onSubmit, required this.controller});
+  Searchbar({super.key, this.onSubmit});
 
   @override
   Widget build(BuildContext context) {
@@ -34,11 +32,7 @@ class Searchbar extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: BlocBuilder<DictionaryCubit, DictionaryState>(
                       builder: (BuildContext context, state) {
-                        var search = state.query;
                         return TextField(
-                            controller: search.isSome()
-                                ? (controller..text = search.unwrap())
-                                : controller,
                             textAlignVertical: TextAlignVertical.center,
                             style: TextStyle(
                               fontSize: 20,
@@ -51,9 +45,11 @@ class Searchbar extends StatelessWidget {
                                   color: Colors.grey,
                                 )),
                             onSubmitted: (query) {
+                              final queryTrimmed = query.trim();
                               BlocProvider.of<DictionaryCubit>(context)
-                                  .query(query);
-                              GoRouter.of(context).go('/search/' + query);
+                                  .query(queryTrimmed);
+                              GoRouter.of(context)
+                                  .go('/search/' + queryTrimmed);
                             });
                       },
                     ),

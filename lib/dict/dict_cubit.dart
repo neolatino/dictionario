@@ -13,7 +13,7 @@ const dictionaryUrl =
 class DictionaryState {
   final bool loaded;
   final Option<Dictionary> dictionary;
-  final List<SearchMatch> matches;
+  final Option<List<SearchMatch>> matches;
   final Option<String> query;
 
   DictionaryState(
@@ -24,14 +24,14 @@ class DictionaryState {
 
   DictionaryState.init()
       : loaded = false,
-        matches = [],
+        matches = None(),
         query = None(),
         dictionary = None();
 
   DictionaryState copyWith(
           {bool? loaded,
           Option<Dictionary>? dictionary,
-          List<SearchMatch>? matches,
+          Option<List<SearchMatch>>? matches,
           Option<String>? query}) =>
       DictionaryState(
         loaded: loaded ?? this.loaded,
@@ -49,20 +49,20 @@ class DictionaryCubit extends Cubit<DictionaryState> {
 
   void query(String query) {
     emit(state.copyWith(
-      matches: [],
+      matches: None(),
       query: Some(query),
     ));
   }
 
   void search(String query) {
     emit(state.copyWith(
-      matches: state.dictionary.toNullable()?.search(query) ?? [],
+      matches: state.dictionary.map((it) => it.search(query)),
       query: Some(query),
     ));
   }
 
   void reset() => emit(state.copyWith(
-        matches: [],
+        matches: None(),
         query: None(),
       ));
 
