@@ -10,24 +10,59 @@ import 'package:neolatino_dictionario/widget/page.dart';
 import 'package:neolatino_dictionario/widget/searchbar.dart';
 
 class SearchPage extends StatelessWidget {
-  const SearchPage({Key? key}) : super(key: key);
+  final ScrollController _scrollController = ScrollController();
+
+  SearchPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<DictionaryCubit, DictionaryState>(
-      builder: (context, state) => PageTemplate(
-        header: Searchbar(),
-        content: state.matches.when(
-          some: (matches) => ListView.builder(
-            padding: EdgeInsets.only(top: 20),
-            itemCount: matches.length,
-            itemBuilder: (context, index) {
-              return match(matches[index]);
-            },
+    return Stack(
+      alignment: AlignmentDirectional.bottomEnd,
+      children: [
+        BlocBuilder<DictionaryCubit, DictionaryState>(
+          builder: (context, state) => PageTemplate(
+            header: Searchbar(),
+            content: state.matches.when(
+              some: (matches) => ListView.builder(
+                padding: EdgeInsets.only(top: 20),
+                itemCount: matches.length,
+                controller: _scrollController,
+                itemBuilder: (context, index) {
+                  return match(matches[index]);
+                },
+              ),
+              none: () => Container(),
+            ),
           ),
-          none: () => Container(),
         ),
-      ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 50.0, horizontal: 15.0),
+          child: GestureDetector(
+            onTap: () {
+              _scrollController.animateTo(
+                  _scrollController.position.minScrollExtent,
+                  duration: const Duration(milliseconds: 400),
+                  curve: Curves.ease);
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                color: Style.colorSurface,
+                border: Border.all(color: Colors.white),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(30),
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Icon(
+                  Icons.arrow_upward,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 
@@ -87,17 +122,6 @@ class SearchPage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      // SizedBox(width: 20),
-                      // Flexible(
-                      //   child: SelectableText(
-                      //     match.entry.catGram,
-                      //     style: TextStyle(
-                      //       fontStyle: FontStyle.italic,
-                      //       fontSize: 25.0,
-                      //       color: Style.DarkerPink,
-                      //     ),
-                      //   ),
-                      // ),
                     ],
                   ),
                   Padding(
@@ -132,14 +156,16 @@ class SearchPage extends StatelessWidget {
                             Icons.bookmark,
                             color: Style.DarkerPink,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10),
-                            child: SelectableText(
-                              match.entry.theme()!,
-                              style: TextStyle(
-                                fontSize: 20.0,
-                                fontStyle: FontStyle.italic,
-                                color: Style.DarkerPink,
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 10),
+                              child: SelectableText(
+                                match.entry.theme()!,
+                                style: TextStyle(
+                                  fontSize: 20.0,
+                                  fontStyle: FontStyle.italic,
+                                  color: Style.DarkerPink,
+                                ),
                               ),
                             ),
                           ),
