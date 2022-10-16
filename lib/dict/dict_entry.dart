@@ -97,7 +97,8 @@ class DictionaryEntry {
 
   SearchMatch? getMatch(String query) {
     final score = Language.values
-        .map((it) => as(it).mapOr((it) => stringDiff(it, query), -1))
+        .map((it) => as(it).mapOr(
+            (it) => stringDiff(removeDiacritics(it.toLowerCase()), query), -1))
         .where((element) => element >= 0)
         .minOrNull;
 
