@@ -40,7 +40,7 @@ GoRouter router() => GoRouter(
         GoRoute(
           path: '/search/:query',
           pageBuilder: (BuildContext context, GoRouterState state) {
-            final query = state.params['query'];
+            final query = state.pathParameters['query'];
             if (query != null)
               BlocProvider.of<DictionaryCubit>(context).search(query);
 

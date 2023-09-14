@@ -75,29 +75,38 @@ class DictionaryCubit extends Cubit<DictionaryState> {
         .skip(3)
         .toList();
 
-    final entries = csv.map((it) {
-      return DictionaryEntry(
-        int.parse(it[0]),
-        it[2],
-        it[3],
-        it[4],
-        it[5],
-        stringToOption(it[8]),
-        stringToOption(it[9]),
-        stringToOption(it[10]),
-        stringToOption(it[11]),
-        stringToOption(it[12]),
-        stringToOption(it[13]),
-        stringToOption(it[14]),
-        stringToOption(it[15]),
-        stringToOption(it[16]),
-        stringToOption(it[17]),
-        stringToOption(it[18]),
-        stringToOption(it[19]),
-        stringToOption(it[20]),
-        stringToOption(it[21]),
-      );
-    }).toList();
+
+    List<DictionaryEntry> entries = List.empty(growable: true);
+
+    for (final it in csv) {
+      try {
+        final entry = DictionaryEntry(
+          int.parse(it[0]),
+          it[2],
+          it[3],
+          it[4],
+          it[5],
+          stringToOption(it[8]),
+          stringToOption(it[9]),
+          stringToOption(it[10]),
+          stringToOption(it[11]),
+          stringToOption(it[12]),
+          stringToOption(it[13]),
+          stringToOption(it[14]),
+          stringToOption(it[15]),
+          stringToOption(it[16]),
+          stringToOption(it[17]),
+          stringToOption(it[18]),
+          stringToOption(it[19]),
+          stringToOption(it[20]),
+          stringToOption(it[21]),
+        );
+
+        entries.add(entry);
+      } catch (e) {
+        print("Error: can't parse entry $it");
+      }
+    }
 
     emit(state.copyWith(dictionary: Some(Dictionary(entries))));
     if (state.query.isSome()) search(state.query.unwrap());
