@@ -8,7 +8,7 @@ import 'package:neolatino_dictionario/dict/dict_entry.dart';
 import 'package:oxidized/oxidized.dart';
 
 const dictionaryUrl =
-    "https://docs.google.com/spreadsheets/d/e/2PACX-1vSGCRUv8z5VSCk7lBy_4gtH2PkFvMH5ny65qauUmYzqWinGEw23IAQT_1seyBGfqw/pub?output=csv";
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vSGCRUv8z5VSCk7lBy_4gtH2PkFvMH5ny65qauUmYzqWinGEw23IAQT_1seyBGfqw/pub?gid=1315031947&single=true&output=csv";
 
 class DictionaryState {
   final bool loaded;
