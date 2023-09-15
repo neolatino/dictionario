@@ -77000,7 +77000,7 @@ wm(b4){var s=0,r=A.X(t.z),q=this,p,o,n,m,l,k,j,i,h,g,f,e,d,c,b,a,a0,a1,a2,a3,a4,
 var $async$wm=A.Y(function(b6,b7){if(b6===1)return A.U(b7,r)
 while(true)switch(s){case 0:b3=new A.A6(!1)
 s=2
-return A.a_(A.aGo(A.ei("https://docs.google.com/spreadsheets/d/e/2PACX-1vSGCRUv8z5VSCk7lBy_4gtH2PkFvMH5ny65qauUmYzqWinGEw23IAQT_1seyBGfqw/pub?output=csv",0,null)),$async$wm)
+return A.a_(A.aGo(A.ei("https://docs.google.com/spreadsheets/d/e/2PACX-1vSGCRUv8z5VSCk7lBy_4gtH2PkFvMH5ny65qauUmYzqWinGEw23IAQT_1seyBGfqw/pub?gid=1315031947&single=true&output=csv",0,null)),$async$wm)
 case 2:a8=b3.cB(b7.w)
 a9=A.aDF(A.a([a8],t._m),!0,null,",",'"','"',"\r\n",!1,!0).ab_(a8,t.z)
 b0=A.f7(a9,3,null,A.a2(a9).c).eJ(0)
